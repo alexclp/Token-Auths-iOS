@@ -21,6 +21,11 @@
 		0FE157111943C5AC00C61A87 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE156F31943C5AB00C61A87 /* UIKit.framework */; };
 		0FE157191943C5AC00C61A87 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FE157171943C5AC00C61A87 /* InfoPlist.strings */; };
 		0FE1571B1943C5AC00C61A87 /* Gmail_Push_ConnectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE1571A1943C5AC00C61A87 /* Gmail_Push_ConnectionTests.m */; };
+		0FEE2274197DDFDF0040E27E /* GTMHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE226C197DDFDF0040E27E /* GTMHTTPFetcher.m */; };
+		0FEE2275197DDFDF0040E27E /* GTMOAuth2Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE226E197DDFDF0040E27E /* GTMOAuth2Authentication.m */; };
+		0FEE2276197DDFDF0040E27E /* GTMOAuth2SignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE2270197DDFDF0040E27E /* GTMOAuth2SignIn.m */; };
+		0FEE2277197DDFDF0040E27E /* GTMOAuth2ViewControllerTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE2272197DDFDF0040E27E /* GTMOAuth2ViewControllerTouch.m */; };
+		0FEE2278197DDFDF0040E27E /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FEE2273197DDFDF0040E27E /* GTMOAuth2ViewTouch.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +58,15 @@
 		0FE157161943C5AC00C61A87 /* Gmail Push ConnectionTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Gmail Push ConnectionTests-Info.plist"; sourceTree = "<group>"; };
 		0FE157181943C5AC00C61A87 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0FE1571A1943C5AC00C61A87 /* Gmail_Push_ConnectionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Gmail_Push_ConnectionTests.m; sourceTree = "<group>"; };
+		0FEE226B197DDFDF0040E27E /* GTMHTTPFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMHTTPFetcher.h; sourceTree = "<group>"; };
+		0FEE226C197DDFDF0040E27E /* GTMHTTPFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMHTTPFetcher.m; sourceTree = "<group>"; };
+		0FEE226D197DDFDF0040E27E /* GTMOAuth2Authentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuth2Authentication.h; sourceTree = "<group>"; };
+		0FEE226E197DDFDF0040E27E /* GTMOAuth2Authentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuth2Authentication.m; sourceTree = "<group>"; };
+		0FEE226F197DDFDF0040E27E /* GTMOAuth2SignIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuth2SignIn.h; sourceTree = "<group>"; };
+		0FEE2270197DDFDF0040E27E /* GTMOAuth2SignIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuth2SignIn.m; sourceTree = "<group>"; };
+		0FEE2271197DDFDF0040E27E /* GTMOAuth2ViewControllerTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuth2ViewControllerTouch.h; sourceTree = "<group>"; };
+		0FEE2272197DDFDF0040E27E /* GTMOAuth2ViewControllerTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuth2ViewControllerTouch.m; sourceTree = "<group>"; };
+		0FEE2273197DDFDF0040E27E /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GTMOAuth2ViewTouch.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +132,7 @@
 				0FE157041943C5AB00C61A87 /* ViewController.h */,
 				0FE157051943C5AB00C61A87 /* ViewController.m */,
 				0FE157071943C5AB00C61A87 /* Images.xcassets */,
+				0FEE2279197DDFEC0040E27E /* Gmail Oauth */,
 				0FE156F61943C5AB00C61A87 /* Supporting Files */,
 			);
 			path = "Gmail Push Connection";
@@ -150,6 +165,22 @@
 				0FE157171943C5AC00C61A87 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0FEE2279197DDFEC0040E27E /* Gmail Oauth */ = {
+			isa = PBXGroup;
+			children = (
+				0FEE226B197DDFDF0040E27E /* GTMHTTPFetcher.h */,
+				0FEE226C197DDFDF0040E27E /* GTMHTTPFetcher.m */,
+				0FEE226D197DDFDF0040E27E /* GTMOAuth2Authentication.h */,
+				0FEE226E197DDFDF0040E27E /* GTMOAuth2Authentication.m */,
+				0FEE226F197DDFDF0040E27E /* GTMOAuth2SignIn.h */,
+				0FEE2270197DDFDF0040E27E /* GTMOAuth2SignIn.m */,
+				0FEE2271197DDFDF0040E27E /* GTMOAuth2ViewControllerTouch.h */,
+				0FEE2272197DDFDF0040E27E /* GTMOAuth2ViewControllerTouch.m */,
+				0FEE2273197DDFDF0040E27E /* GTMOAuth2ViewTouch.xib */,
+			);
+			name = "Gmail Oauth";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,6 +259,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FEE2278197DDFDF0040E27E /* GTMOAuth2ViewTouch.xib in Resources */,
 				0FE157081943C5AB00C61A87 /* Images.xcassets in Resources */,
 				0FE156FA1943C5AB00C61A87 /* InfoPlist.strings in Resources */,
 				0FE157031943C5AB00C61A87 /* Main.storyboard in Resources */,
@@ -249,8 +281,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FEE2274197DDFDF0040E27E /* GTMHTTPFetcher.m in Sources */,
+				0FEE2276197DDFDF0040E27E /* GTMOAuth2SignIn.m in Sources */,
 				0FE157061943C5AB00C61A87 /* ViewController.m in Sources */,
+				0FEE2275197DDFDF0040E27E /* GTMOAuth2Authentication.m in Sources */,
 				0FE157001943C5AB00C61A87 /* AppDelegate.m in Sources */,
+				0FEE2277197DDFDF0040E27E /* GTMOAuth2ViewControllerTouch.m in Sources */,
 				0FE156FC1943C5AB00C61A87 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,6 +492,7 @@
 				0FE157201943C5AC00C61A87 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0FE157211943C5AC00C61A87 /* Build configuration list for PBXNativeTarget "Gmail Push ConnectionTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +501,7 @@
 				0FE157231943C5AC00C61A87 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
