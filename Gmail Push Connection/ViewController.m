@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "AFHTTPRequestOperationManager.h"
 
 /*
 #define GoogleClientID @"452674355061-pfphf42qr8p97o4vb9917ed1bc57fd42.apps.googleusercontent.com"
@@ -22,6 +23,8 @@
 
 #define GoogleAuthURL   @"https://accounts.google.com/o/oauth2/auth"
 #define GoogleTokenURL  @"https://accounts.google.com/o/oauth2/token"
+
+static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 
 @interface ViewController ()
 
@@ -41,14 +44,14 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark User Interaction Methods
+#pragma mark GMAIL
 
 - (IBAction)gmailButtonClicked:(id)sender
 {
 	
 	NSURL *tokenURL = [NSURL URLWithString:GoogleTokenURL];
 	
-    NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
+//    NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 	
     GTMOAuth2Authentication *auth;
 	
@@ -60,7 +63,7 @@
 	
     auth.scope = @"https://www.googleapis.com/auth/plus.me";
 	
-    GTMOAuth2ViewControllerTouch * viewController = [[GTMOAuth2ViewControllerTouch alloc] initWithAuthentication:auth
+    GTMOAuth2ViewControllerTouch *viewController = [[GTMOAuth2ViewControllerTouch alloc] initWithAuthentication:auth
                                                                                                 authorizationURL:[NSURL URLWithString:GoogleAuthURL]
                                                                                                 keychainItemName:@"GoogleKeychainName" delegate:self
                                                                                                 finishedSelector:@selector(viewController:finishedWithAuth:error:)];
@@ -80,7 +83,11 @@
                                                         delegate:nil
 											   cancelButtonTitle:@"OK"
 											   otherButtonTitles:nil];
+		
         [alert show];
+		
+		
+		
     } else {
 		
 		UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Alert !"
@@ -90,7 +97,12 @@
 											   otherButtonTitles:nil];
         [alert show];
 		
+		NSLog(@"token = %@", auth.accessToken);
+		
+//		[self tokenRequestWithCode:auth.code];
+		
     }
 }
+
 
 @end
