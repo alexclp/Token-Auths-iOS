@@ -21,10 +21,10 @@
 		0FE157111943C5AC00C61A87 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE156F31943C5AB00C61A87 /* UIKit.framework */; };
 		0FE157191943C5AC00C61A87 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0FE157171943C5AC00C61A87 /* InfoPlist.strings */; };
 		0FE1571B1943C5AC00C61A87 /* Gmail_Push_ConnectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE1571A1943C5AC00C61A87 /* Gmail_Push_ConnectionTests.m */; };
-		0FEE2274197DDFDF0040E27E /* GTMHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE226C197DDFDF0040E27E /* GTMHTTPFetcher.m */; };
-		0FEE2275197DDFDF0040E27E /* GTMOAuth2Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE226E197DDFDF0040E27E /* GTMOAuth2Authentication.m */; };
-		0FEE2276197DDFDF0040E27E /* GTMOAuth2SignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE2270197DDFDF0040E27E /* GTMOAuth2SignIn.m */; };
-		0FEE2277197DDFDF0040E27E /* GTMOAuth2ViewControllerTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE2272197DDFDF0040E27E /* GTMOAuth2ViewControllerTouch.m */; };
+		0FEE2274197DDFDF0040E27E /* GTMHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE226C197DDFDF0040E27E /* GTMHTTPFetcher.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0FEE2275197DDFDF0040E27E /* GTMOAuth2Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE226E197DDFDF0040E27E /* GTMOAuth2Authentication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0FEE2276197DDFDF0040E27E /* GTMOAuth2SignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE2270197DDFDF0040E27E /* GTMOAuth2SignIn.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0FEE2277197DDFDF0040E27E /* GTMOAuth2ViewControllerTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FEE2272197DDFDF0040E27E /* GTMOAuth2ViewControllerTouch.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0FEE2278197DDFDF0040E27E /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FEE2273197DDFDF0040E27E /* GTMOAuth2ViewTouch.xib */; };
 /* End PBXBuildFile section */
 
