@@ -8,8 +8,18 @@
 
 #import "ViewController.h"
 
+/*
 #define GoogleClientID @"452674355061-pfphf42qr8p97o4vb9917ed1bc57fd42.apps.googleusercontent.com"
 #define GoogleClientSecret @"aaRo9WyJrhl4-eKBQ8pAytmm"
+*/
+
+///*
+
+#define GoogleClientID    @"997352802958-evpubtvdrtmueh20rd938625tpo2b5s8.apps.googleusercontent.com"
+#define GoogleClientSecret @"fHwEmNBQKKyqKmmnotThEM-g"
+
+//*/
+
 #define GoogleAuthURL   @"https://accounts.google.com/o/oauth2/auth"
 #define GoogleTokenURL  @"https://accounts.google.com/o/oauth2/token"
 
@@ -35,22 +45,28 @@
 
 - (IBAction)gmailButtonClicked:(id)sender
 {
+	
 	NSURL *tokenURL = [NSURL URLWithString:GoogleTokenURL];
 	
-	NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
+    NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 	
-	GTMOAuth2Authentication *auth;
+    GTMOAuth2Authentication *auth;
 	
-	auth = [GTMOAuth2Authentication authenticationWithServiceProvider:@"google" tokenURL:tokenURL redirectURI:redirectURI clientID:GoogleClientID clientSecret:GoogleClientSecret];
+    auth = [GTMOAuth2Authentication authenticationWithServiceProvider:@"google"
+                                                             tokenURL:tokenURL
+                                                          redirectURI:redirectURI
+                                                             clientID:GoogleClientID
+                                                         clientSecret:GoogleClientSecret];
 	
-	auth.scope = @"https://www.googleapis.com/auth/plus.me";
+    auth.scope = @"https://www.googleapis.com/auth/plus.me";
 	
-	GTMOAuth2ViewControllerTouch * viewController = [[GTMOAuth2ViewControllerTouch alloc] initWithAuthentication:auth
+    GTMOAuth2ViewControllerTouch * viewController = [[GTMOAuth2ViewControllerTouch alloc] initWithAuthentication:auth
                                                                                                 authorizationURL:[NSURL URLWithString:GoogleAuthURL]
                                                                                                 keychainItemName:@"GoogleKeychainName" delegate:self
                                                                                                 finishedSelector:@selector(viewController:finishedWithAuth:error:)];
 	
-	[self.navigationController pushViewController:viewController animated:YES];
+    [self.navigationController pushViewController:viewController animated:YES];
+	
 }
 
 //this method is called when authentication finished
