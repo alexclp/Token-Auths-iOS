@@ -13,5 +13,6 @@
 @interface ViewController : UIViewController
 
 - (IBAction)gmailButtonClicked:(id)sender;
+- (IBAction)yahooButtonClicked:(id)sender;
 
 @end

@@ -24,6 +24,9 @@
 #define GoogleAuthURL   @"https://accounts.google.com/o/oauth2/auth"
 #define GoogleTokenURL  @"https://accounts.google.com/o/oauth2/token"
 
+#define YahooConsumerKey @"dj0yJmk9WXdZejdYNXdHRHdhJmQ9WVdrOU5VZHVTWFpJTkdNbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD0xZA--"
+#define YahooConsumerSecret @"cf101d517f2c3af066c225f54233cf62011ea27c"
+
 static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 
 @interface ViewController ()
@@ -103,6 +106,34 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 		
     }
 }
+
+- (NSString *)getTimeStamp
+{
+	NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
+//	NSTimeInterval is defined as double
+	
+	NSNumber *timeStampObj = [NSNumber numberWithDouble:timeStamp];
+	
+	return [NSString stringWithFormat:@"%@", timeStampObj];
+}
+
+#pragma mark YAHOO
+
+- (IBAction)yahooButtonClicked:(id)sender
+{
+	
+	
+	NSDictionary *parameters = @{@"oauth_consumer_key": YahooConsumerKey, @"oauth_signature_method": @"plaintext", @"oauth_signature": [YahooConsumerSecret stringByAppendingString:@"%26"], @"oauth_version": @"1.0", @"xoauth_lang_pref": @"en_us", @"oauth_callback": @"http://alexandruclapa.com", @"oauth_timestamp": [self getTimeStamp], @"oauth_nonce": @"123456789"};
+	
+	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+	[manager GET:@"http://example.com/resources.json" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		NSLog(@"JSON: %@", responseObject);
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		NSLog(@"Error: %@", error);
+	}];
+}
+
+#pragma mark OUTLOOK
 
 
 @end
