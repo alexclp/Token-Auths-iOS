@@ -114,7 +114,9 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 	
 	NSNumber *timeStampObj = [NSNumber numberWithDouble:timeStamp];
 	
-	return [NSString stringWithFormat:@"%@", timeStampObj];
+	int timeStampint = [timeStampObj intValue];
+	
+	return [NSString stringWithFormat:@"%d", timeStampint];
 }
 
 #pragma mark YAHOO
