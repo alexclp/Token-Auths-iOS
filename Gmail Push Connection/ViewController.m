@@ -126,7 +126,7 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 	NSDictionary *parameters = @{@"oauth_consumer_key": YahooConsumerKey, @"oauth_signature_method": @"plaintext", @"oauth_signature": [YahooConsumerSecret stringByAppendingString:@"%26"], @"oauth_version": @"1.0", @"xoauth_lang_pref": @"en_us", @"oauth_callback": @"http://alexandruclapa.com", @"oauth_timestamp": [self getTimeStamp], @"oauth_nonce": @"123456789"};
 	
 	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-	[manager GET:@"http://example.com/resources.json" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+	[manager GET:@"https://api.login.yahoo.com/oauth/v2/get_request_token" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
 		NSLog(@"JSON: %@", responseObject);
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 		NSLog(@"Error: %@", error);

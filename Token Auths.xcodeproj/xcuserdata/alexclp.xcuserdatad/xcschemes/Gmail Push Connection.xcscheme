@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0FE156EB1943C5AB00C61A87"
-            BuildableName = "Gmail Push Connection.app"
-            BlueprintName = "Gmail Push Connection"
-            ReferencedContainer = "container:Gmail Push Connection.xcodeproj">
+            BuildableName = "Token Auths.app"
+            BlueprintName = "Token Auths"
+            ReferencedContainer = "container:Token Auths.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0FE156EB1943C5AB00C61A87"
-            BuildableName = "Gmail Push Connection.app"
-            BlueprintName = "Gmail Push Connection"
-            ReferencedContainer = "container:Gmail Push Connection.xcodeproj">
+            BuildableName = "Token Auths.app"
+            BlueprintName = "Token Auths"
+            ReferencedContainer = "container:Token Auths.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
