@@ -24,8 +24,8 @@
 #define GoogleAuthURL   @"https://accounts.google.com/o/oauth2/auth"
 #define GoogleTokenURL  @"https://accounts.google.com/o/oauth2/token"
 
-#define YahooConsumerKey @"dj0yJmk9WXdZejdYNXdHRHdhJmQ9WVdrOU5VZHVTWFpJTkdNbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD0xZA--"
-#define YahooConsumerSecret @"cf101d517f2c3af066c225f54233cf62011ea27c"
+#define YahooConsumerKey @"ddj0yJmk9bEo2TmFVbTBZMlNvJmQ9WVdrOU5VZHVTWFpJTkdNbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD1lOA--"
+#define YahooConsumerSecret @"621f893e5e295f8efba1c76a4e4eb8fcb9371e0e"
 
 static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 
@@ -137,6 +137,8 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 								 @"oauth_callback": redirectURI,
 								 @"oauth_timestamp": [self getTimeStamp],
 								 @"oauth_nonce": [NSString stringWithFormat:@"%d", randomNumber]};
+	
+	NSLog(@"timestamp = %@", [self getTimeStamp]);
 	
 	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
 	[manager GET:@"https://api.login.yahoo.com/oauth/v2/get_request_token" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
