@@ -24,7 +24,7 @@
 #define GoogleAuthURL   @"https://accounts.google.com/o/oauth2/auth"
 #define GoogleTokenURL  @"https://accounts.google.com/o/oauth2/token"
 
-#define YahooConsumerKey @"dj0yJmk9WXdZejdYNXdHRHdhJmQ9WVdrOU5VZHVTWFpJTkdNbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD0xZA"
+#define YahooConsumerKey @"dj0yJmk9WXdZejdYNXdHRHdhJmQ9WVdrOU5VZHVTWFpJTkdNbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD0xZA--"
 #define YahooConsumerSecret @"cf101d517f2c3af066c225f54233cf62011ea27c"
 
 static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
@@ -125,7 +125,18 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 {
 	
 	
-	NSDictionary *parameters = @{@"oauth_consumer_key": YahooConsumerKey, @"oauth_signature_method": @"plaintext", @"oauth_signature": [YahooConsumerSecret stringByAppendingString:@"%26"], @"oauth_version": @"1.0", @"xoauth_lang_pref": @"en_us", @"oauth_callback": @"http://alexandruclapa.com", @"oauth_timestamp": [self getTimeStamp], @"oauth_nonce": @"123456789"};
+	//NSDictionary *parameters = @{@"oauth_consumer_key": YahooConsumerKey, @"oauth_signature_method": @"plaintext", @"oauth_signature": [YahooConsumerSecret stringByAppendingString:@"%26"], @"oauth_version": @"1.0", @"xoauth_lang_pref": @"en_us", @"oauth_callback": redirectURI, @"oauth_timestamp": [self getTimeStamp], @"oauth_nonce": @"123456789"};
+	
+	int randomNumber = rand();
+	
+	NSDictionary *parameters = @{@"oauth_consumer_key": YahooConsumerKey,
+								 @"oauth_signature_method": @"plaintext",
+								 @"oauth_signature": YahooConsumerSecret,
+								 @"oauth_version": @"1.0",
+								 @"xoauth_lang_pref": @"en_us",
+								 @"oauth_callback": redirectURI,
+								 @"oauth_timestamp": [self getTimeStamp],
+								 @"oauth_nonce": [NSString stringWithFormat:@"%d", randomNumber]};
 	
 	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
 	[manager GET:@"https://api.login.yahoo.com/oauth/v2/get_request_token" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
