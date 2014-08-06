@@ -119,55 +119,11 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 
 #pragma mark YAHOO
 
-- (NSString *)getDataFrom:(NSString *)url
-{
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setHTTPMethod:@"GET"];
-    [request setURL:[NSURL URLWithString:url]];
-	
-    NSError *error = [[NSError alloc] init];
-    NSHTTPURLResponse *responseCode = nil;
-	
-    NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
-	
-    if([responseCode statusCode] != 200){
-        NSLog(@"Error getting %@, HTTP status code %i", url, [responseCode statusCode]);
-        return nil;
-    }
-	
-    return [[NSString alloc] initWithData:oResponseData encoding:NSUTF8StringEncoding];
-}
-
 - (IBAction)yahooButtonClicked:(id)sender
 {
-	NSString *URL = [self createURL];
-	
-	NSLog(@"DATA = %@", [self getDataFrom:URL]);
+	NSLog(@"Token is = %@", [Networking returnTokenYahoo]);
 }
 
-- (NSString *)createURL
-{
-	int randomNumber = rand();
-	
-	NSMutableString *URL = [NSMutableString stringWithFormat:@"%@", @"https://api.login.yahoo.com/oauth/v2/get_request_token?"];
-	
-	NSDictionary *parameters = @{@"oauth_consumer_key": YahooConsumerKey,
-								 @"oauth_signature_method": @"plaintext",
-								 @"oauth_signature": YahooConsumerSecret,
-								 @"oauth_version": @"1.0",
-								 @"xoauth_lang_pref": @"en_us",
-								 @"oauth_callback": @"oob",
-								 @"oauth_timestamp": [self getTimeStamp],
-								 @"oauth_nonce": [NSString stringWithFormat:@"%d", randomNumber]};
-	
-	for (NSString *parameterTitle in parameters) {
-		NSString *stringToAdd = [NSString stringWithFormat:@"%@=%@&", parameterTitle, [parameters objectForKey:parameterTitle]];
-		
-		[URL appendString:stringToAdd];
-	}
-	
-	return URL.copy;
-}
 
 #pragma mark OUTLOOK
 
