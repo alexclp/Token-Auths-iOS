@@ -121,7 +121,9 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 
 - (IBAction)yahooButtonClicked:(id)sender
 {
-	NSLog(@"Token is = %@", [Networking returnTokenYahoo]);
+	Networking *instance = [[Networking alloc] init];
+	
+	[instance returnTokenYahoo];
 }
 
 

@@ -11,6 +11,6 @@
 
 @interface Networking : NSObject
 
-+ (NSString *)returnTokenYahoo;
+- (NSString *)returnTokenYahoo;
 
 @end

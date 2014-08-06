@@ -79,9 +79,24 @@
 	return URL.copy;
 }
 
-+ (NSString *)returnTokenYahoo
+- (NSString *)parseJSON:(NSString *)JSON
+{
+	NSError *theError = NULL;
+	
+	NSDictionary *parsedDictionary = [NSDictionary dictionaryWithJSONString:JSON error:&theError];
+	
+	NSLog(@"dict = %@", parsedDictionary);
+	
+	return @"";
+}
+
+- (NSString *)returnTokenYahoo
 {
 	NSString *toReturn = @"";
+	
+	NSString *data = [self getDataFrom:[self createYahooURL]];
+	
+	NSString *result = [self parseJSON:data];
 	
 	return toReturn;
 }
