@@ -10,4 +10,10 @@
 
 @interface YahooResponse : NSObject
 
+@property (strong, nonatomic) NSString *token;
+@property (strong, nonatomic) NSString *tokenSecret;
+@property (strong, nonatomic) NSString *expireTimer;
+@property (strong, nonatomic) NSString *requestURL;
+@property (strong, nonatomic) NSString *callBackConfirmed;
+
 @end
