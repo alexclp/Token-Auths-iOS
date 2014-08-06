@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "AFHTTPRequestOperationManager.h"
+#import "Networking.h"
 
 /*
 #define GoogleClientID @"452674355061-pfphf42qr8p97o4vb9917ed1bc57fd42.apps.googleusercontent.com"
@@ -23,9 +24,6 @@
 
 #define GoogleAuthURL   @"https://accounts.google.com/o/oauth2/auth"
 #define GoogleTokenURL  @"https://accounts.google.com/o/oauth2/token"
-
-#define YahooConsumerKey @"dj0yJmk9bEo2TmFVbTBZMlNvJmQ9WVdrOU5VZHVTWFpJTkdNbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD1lOA--"
-#define YahooConsumerSecret @"621f893e5e295f8efba1c76a4e4eb8fcb9371e0e%26"
 
 static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 
