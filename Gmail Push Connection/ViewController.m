@@ -24,8 +24,8 @@
 #define GoogleAuthURL   @"https://accounts.google.com/o/oauth2/auth"
 #define GoogleTokenURL  @"https://accounts.google.com/o/oauth2/token"
 
-#define YahooConsumerKey @"ddj0yJmk9bEo2TmFVbTBZMlNvJmQ9WVdrOU5VZHVTWFpJTkdNbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD1lOA--"
-#define YahooConsumerSecret @"621f893e5e295f8efba1c76a4e4eb8fcb9371e0e"
+#define YahooConsumerKey @"dj0yJmk9bEo2TmFVbTBZMlNvJmQ9WVdrOU5VZHVTWFpJTkdNbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD1lOA--"
+#define YahooConsumerSecret @"621f893e5e295f8efba1c76a4e4eb8fcb9371e0e%26"
 
 static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 
@@ -100,7 +100,7 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 											   otherButtonTitles:nil];
         [alert show];
 		
-		NSLog(@"token = %@", auth.accessToken);
+//		NSLog(@"token = %@", auth.accessToken);
 		
 //		[self tokenRequestWithCode:auth.code];
 		
@@ -121,31 +121,54 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 
 #pragma mark YAHOO
 
+- (NSString *)getDataFrom:(NSString *)url
+{
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setHTTPMethod:@"GET"];
+    [request setURL:[NSURL URLWithString:url]];
+	
+    NSError *error = [[NSError alloc] init];
+    NSHTTPURLResponse *responseCode = nil;
+	
+    NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
+	
+    if([responseCode statusCode] != 200){
+        NSLog(@"Error getting %@, HTTP status code %i", url, [responseCode statusCode]);
+        return nil;
+    }
+	
+    return [[NSString alloc] initWithData:oResponseData encoding:NSUTF8StringEncoding];
+}
+
 - (IBAction)yahooButtonClicked:(id)sender
 {
+	NSString *URL = [self createURL];
 	
-	
-	//NSDictionary *parameters = @{@"oauth_consumer_key": YahooConsumerKey, @"oauth_signature_method": @"plaintext", @"oauth_signature": [YahooConsumerSecret stringByAppendingString:@"%26"], @"oauth_version": @"1.0", @"xoauth_lang_pref": @"en_us", @"oauth_callback": redirectURI, @"oauth_timestamp": [self getTimeStamp], @"oauth_nonce": @"123456789"};
-	
+	NSLog(@"DATA = %@", [self getDataFrom:URL]);
+}
+
+- (NSString *)createURL
+{
 	int randomNumber = rand();
+	
+	NSMutableString *URL = [NSMutableString stringWithFormat:@"%@", @"https://api.login.yahoo.com/oauth/v2/get_request_token?"];
 	
 	NSDictionary *parameters = @{@"oauth_consumer_key": YahooConsumerKey,
 								 @"oauth_signature_method": @"plaintext",
 								 @"oauth_signature": YahooConsumerSecret,
 								 @"oauth_version": @"1.0",
 								 @"xoauth_lang_pref": @"en_us",
-								 @"oauth_callback": redirectURI,
+								 @"oauth_callback": @"oob",
 								 @"oauth_timestamp": [self getTimeStamp],
 								 @"oauth_nonce": [NSString stringWithFormat:@"%d", randomNumber]};
 	
-	NSLog(@"timestamp = %@", [self getTimeStamp]);
+	for (NSString *parameterTitle in parameters) {
+		NSString *stringToAdd = [NSString stringWithFormat:@"%@=%@&", parameterTitle, [parameters objectForKey:parameterTitle]];
+		
+		[URL appendString:stringToAdd];
+	}
 	
-	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-	[manager GET:@"https://api.login.yahoo.com/oauth/v2/get_request_token" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		NSLog(@"JSON: %@", responseObject);
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-		NSLog(@"Error: %@", error);
-	}];
+	return URL.copy;
 }
 
 #pragma mark OUTLOOK
