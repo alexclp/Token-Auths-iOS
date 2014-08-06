@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0F34E0E01992C22C0097EEC7 /* Networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F34E0DF1992C22C0097EEC7 /* Networking.m */; };
+		0F34E0E31992F69A0097EEC7 /* YahooResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F34E0E21992F69A0097EEC7 /* YahooResponse.m */; };
 		0FE156F01943C5AB00C61A87 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE156EF1943C5AB00C61A87 /* Foundation.framework */; };
 		0FE156F21943C5AB00C61A87 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE156F11943C5AB00C61A87 /* CoreGraphics.framework */; };
 		0FE156F41943C5AB00C61A87 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE156F31943C5AB00C61A87 /* UIKit.framework */; };
@@ -44,6 +45,8 @@
 		0B073DCAA9DB4CB98615956F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F34E0DE1992C22C0097EEC7 /* Networking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Networking.h; sourceTree = "<group>"; };
 		0F34E0DF1992C22C0097EEC7 /* Networking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Networking.m; sourceTree = "<group>"; };
+		0F34E0E11992F69A0097EEC7 /* YahooResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YahooResponse.h; sourceTree = "<group>"; };
+		0F34E0E21992F69A0097EEC7 /* YahooResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YahooResponse.m; sourceTree = "<group>"; };
 		0FE156EC1943C5AB00C61A87 /* Token Auths.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Token Auths.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FE156EF1943C5AB00C61A87 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0FE156F11943C5AB00C61A87 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -142,6 +145,8 @@
 				0FE157051943C5AB00C61A87 /* ViewController.m */,
 				0F34E0DE1992C22C0097EEC7 /* Networking.h */,
 				0F34E0DF1992C22C0097EEC7 /* Networking.m */,
+				0F34E0E11992F69A0097EEC7 /* YahooResponse.h */,
+				0F34E0E21992F69A0097EEC7 /* YahooResponse.m */,
 				0FE157071943C5AB00C61A87 /* Images.xcassets */,
 				0FEE2279197DDFEC0040E27E /* Gmail Oauth */,
 				0FE156F61943C5AB00C61A87 /* Supporting Files */,
@@ -327,6 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F34E0E31992F69A0097EEC7 /* YahooResponse.m in Sources */,
 				0FEE2274197DDFDF0040E27E /* GTMHTTPFetcher.m in Sources */,
 				0FEE2276197DDFDF0040E27E /* GTMOAuth2SignIn.m in Sources */,
 				0FE157061943C5AB00C61A87 /* ViewController.m in Sources */,
