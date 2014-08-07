@@ -16,4 +16,6 @@
 @property (strong, nonatomic) NSString *requestURL;
 @property (strong, nonatomic) NSString *callBackConfirmed;
 
++ (YahooResponse *)getYahooResponseWithData:(NSArray *)data;
+
 @end

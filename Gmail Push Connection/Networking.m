@@ -7,6 +7,7 @@
 //
 
 #import "Networking.h"
+#import "YahooResponse.h"
 
 #define YahooConsumerKey @"dj0yJmk9bEo2TmFVbTBZMlNvJmQ9WVdrOU5VZHVTWFpJTkdNbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD1lOA--"
 #define YahooConsumerSecret @"621f893e5e295f8efba1c76a4e4eb8fcb9371e0e%26"
@@ -79,11 +80,16 @@
 	return URL.copy;
 }
 
-- (NSString *)parseResponse:(NSString *)response
+- (YahooResponse *)parseResponse:(NSString *)response
 {
 	NSLog(@"response = %@", response);
 	
 	NSArray *substrings = [response componentsSeparatedByString:@"="];
+/*
+	oauth_token=hamakpw&oauth_token_secret=f0c686731a6f873d9ff30f0aff845d19d6dfed4d&oauth_expires_in=3600&xoauth_request_auth_url=https%3A%2F%2Fapi.login.yahoo.com%2Foauth%2Fv2%2Frequest_auth%3Foauth_token%3Dhamakpw&oauth_callback_confirmed=true
+ 
+	The response looks something like that, so I am separating the substrings that have the sign equals between them at first, and then the one that have the & sign. So what I'm getting is exactly the values that I want. I'm sure there's a better way to do it. Will come up with one later.
+*/
 	
 	NSMutableArray *modifiedSubstrings = [NSMutableArray arrayWithArray:substrings];
 	[modifiedSubstrings removeObjectAtIndex:0];
@@ -102,7 +108,7 @@
 	
 	NSString *callback = [modifiedSubstrings objectAtIndex:0];
 	
-	return @"";
+	return [YahooResponse getYahooResponseWithData:@[token, tokenSecret, expireTimer, requestURL, callback]];
 }
 
 - (NSString *)returnTokenYahoo
@@ -111,7 +117,7 @@
 	
 	NSString *data = [self getDataFrom:[self createYahooURL]];
 	
-	NSString *result = [self parseResponse:data];
+	YahooResponse *result = [self parseResponse:data];
 	
 	return toReturn;
 }
