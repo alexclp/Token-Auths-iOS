@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		0F34E0E01992C22C0097EEC7 /* Networking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F34E0DF1992C22C0097EEC7 /* Networking.m */; };
 		0F34E0E31992F69A0097EEC7 /* YahooResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F34E0E21992F69A0097EEC7 /* YahooResponse.m */; };
-		0F34E13C19941E990097EEC7 /* GTMOAuthAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F34E13919941E990097EEC7 /* GTMOAuthAuthentication.m */; };
-		0F34E13D19941E990097EEC7 /* GTMOAuthSignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F34E13B19941E990097EEC7 /* GTMOAuthSignIn.m */; };
+		0F34E13C19941E990097EEC7 /* GTMOAuthAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F34E13919941E990097EEC7 /* GTMOAuthAuthentication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0F34E13D19941E990097EEC7 /* GTMOAuthSignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F34E13B19941E990097EEC7 /* GTMOAuthSignIn.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0F34E1411994234C0097EEC7 /* GTMOAuthViewControllerTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F34E13F1994234C0097EEC7 /* GTMOAuthViewControllerTouch.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0F34E1421994234C0097EEC7 /* GTMOAuthViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F34E1401994234C0097EEC7 /* GTMOAuthViewTouch.xib */; };
 		0FE156F01943C5AB00C61A87 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE156EF1943C5AB00C61A87 /* Foundation.framework */; };
 		0FE156F21943C5AB00C61A87 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE156F11943C5AB00C61A87 /* CoreGraphics.framework */; };
 		0FE156F41943C5AB00C61A87 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE156F31943C5AB00C61A87 /* UIKit.framework */; };
@@ -53,6 +55,9 @@
 		0F34E13919941E990097EEC7 /* GTMOAuthAuthentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuthAuthentication.m; sourceTree = "<group>"; };
 		0F34E13A19941E990097EEC7 /* GTMOAuthSignIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuthSignIn.h; sourceTree = "<group>"; };
 		0F34E13B19941E990097EEC7 /* GTMOAuthSignIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuthSignIn.m; sourceTree = "<group>"; };
+		0F34E13E1994234C0097EEC7 /* GTMOAuthViewControllerTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuthViewControllerTouch.h; sourceTree = "<group>"; };
+		0F34E13F1994234C0097EEC7 /* GTMOAuthViewControllerTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuthViewControllerTouch.m; sourceTree = "<group>"; };
+		0F34E1401994234C0097EEC7 /* GTMOAuthViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GTMOAuthViewTouch.xib; sourceTree = "<group>"; };
 		0FE156EC1943C5AB00C61A87 /* Token Auths.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Token Auths.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FE156EF1943C5AB00C61A87 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0FE156F11943C5AB00C61A87 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -192,6 +197,9 @@
 		0FEE2279197DDFEC0040E27E /* Gmail Oauth */ = {
 			isa = PBXGroup;
 			children = (
+				0F34E13E1994234C0097EEC7 /* GTMOAuthViewControllerTouch.h */,
+				0F34E13F1994234C0097EEC7 /* GTMOAuthViewControllerTouch.m */,
+				0F34E1401994234C0097EEC7 /* GTMOAuthViewTouch.xib */,
 				0F34E13819941E990097EEC7 /* GTMOAuthAuthentication.h */,
 				0F34E13919941E990097EEC7 /* GTMOAuthAuthentication.m */,
 				0F34E13A19941E990097EEC7 /* GTMOAuthSignIn.h */,
@@ -287,6 +295,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F34E1421994234C0097EEC7 /* GTMOAuthViewTouch.xib in Resources */,
 				0FEE2278197DDFDF0040E27E /* GTMOAuth2ViewTouch.xib in Resources */,
 				0FE157081943C5AB00C61A87 /* Images.xcassets in Resources */,
 				0FE156FA1943C5AB00C61A87 /* InfoPlist.strings in Resources */,
@@ -353,6 +362,7 @@
 				0FEE2277197DDFDF0040E27E /* GTMOAuth2ViewControllerTouch.m in Sources */,
 				0FE156FC1943C5AB00C61A87 /* main.m in Sources */,
 				0F34E0E01992C22C0097EEC7 /* Networking.m in Sources */,
+				0F34E1411994234C0097EEC7 /* GTMOAuthViewControllerTouch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

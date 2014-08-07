@@ -10,6 +10,9 @@
 #import "AFHTTPRequestOperationManager.h"
 #import "Networking.h"
 
+#import "GTMOAuthAuthentication.h"
+#import "GTMOAuthViewControllerTouch.h"
+
 /*
 #define GoogleClientID @"452674355061-pfphf42qr8p97o4vb9917ed1bc57fd42.apps.googleusercontent.com"
 #define GoogleClientSecret @"aaRo9WyJrhl4-eKBQ8pAytmm"
@@ -28,6 +31,7 @@
 #define YahooConsumerKey @"dj0yJmk9bEo2TmFVbTBZMlNvJmQ9WVdrOU5VZHVTWFpJTkdNbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD1lOA--"
 #define YahooConsumerSecret @"621f893e5e295f8efba1c76a4e4eb8fcb9371e0e%26"
 #define YahooApplicationID @"5GnIvH4c"
+#define kYahooKeychainItemName @"OAuth Sample: Yahoo"
 
 static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 
@@ -123,6 +127,17 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 
 #pragma mark YAHOO
 
+- (GTMOAuthAuthentication *)authForYahoo
+{
+	GTMOAuthAuthentication *auth;
+	
+	auth = [[GTMOAuthAuthentication alloc] initWithSignatureMethod:kGTMOAuthSignatureMethodHMAC_SHA1 consumerKey:YahooConsumerKey privateKey:YahooConsumerSecret];
+	
+	[auth setServiceProvider:@"Yahoo"];
+	
+	return auth;
+}
+
 - (IBAction)yahooButtonClicked:(id)sender
 {
 //	Networking *instance = [[Networking alloc] init];
@@ -134,8 +149,20 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 	NSURL *authorizeURL = [NSURL URLWithString:@"https://api.login.yahoo.com/oauth/v2/request_auth"];
 	NSString *scope = @"https://api.login.yahoo.com";
 	
+	GTMOAuthAuthentication *auth = [self authForYahoo];
+	if (auth == nil) {
+		NSLog(@"Auth not initialized");
+	}
 	
+	[auth setCallback:@"oob"];
+	
+	GTMOAuthViewControllerTouch *viewController;
+	viewController = [[GTMOAuthViewControllerTouch alloc] initWithScope:nil language:nil requestTokenURL:requestURL authorizeTokenURL:authorizeURL accessTokenURL:accessURL authentication:auth appServiceName:kYahooKeychainItemName delegate:self finishedSelector:@selector(viewController:finishedWithAuth:error:)];
+	
+	[self.navigationController pushViewController:viewController animated:YES];
 }
+
+
 
 
 #pragma mark OUTLOOK
