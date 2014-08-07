@@ -10,4 +10,17 @@
 
 @implementation YahooResponse
 
++ (YahooResponse *)getYahooResponseWithToken:(NSString *)token tokenSecret:(NSString *)tokenSecret expireTimer:(NSString *)timer oauthRequestURL:(NSString *)URL andCallBackConfirmed:(NSString *)status
+{
+	YahooResponse *toReturn = [[YahooResponse alloc] init];
+	
+	toReturn.token = token;
+	toReturn.tokenSecret = tokenSecret;
+	toReturn.expireTimer = timer;
+	toReturn.requestURL = URL;
+	toReturn.callBackConfirmed = status;
+	
+	return toReturn;
+}
+
 @end

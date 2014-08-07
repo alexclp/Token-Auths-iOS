@@ -16,6 +16,6 @@
 @property (strong, nonatomic) NSString *requestURL;
 @property (strong, nonatomic) NSString *callBackConfirmed;
 
-+ (YahooResponse *)getYahooResponseWithData:(NSArray *)data;
++ (YahooResponse *)getYahooResponseWithToken:(NSString *)token tokenSecret:(NSString *)tokenSecret expireTimer:(NSString *)timer oauthRequestURL:(NSString *)URL andCallBackConfirmed:(NSString *)status;
 
 @end
