@@ -106,7 +106,7 @@
 	
 	NSString *callback = [modifiedSubstrings objectAtIndex:0];
 	
-	return [YahooResponse getYahooResponseWithData:@[token, tokenSecret, expireTimer, requestURL, callback]];
+	return [YahooResponse getYahooResponseWithToken:token tokenSecret:tokenSecret expireTimer:expireTimer oauthRequestURL:requestURL andCallBackConfirmed:callback];
 }
 
 - (NSString *)returnTokenYahoo
