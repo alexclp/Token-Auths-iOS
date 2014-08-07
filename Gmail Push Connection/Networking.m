@@ -79,13 +79,28 @@
 	return URL.copy;
 }
 
-- (NSString *)parseJSON:(NSString *)JSON
+- (NSString *)parseResponse:(NSString *)response
 {
-	NSError *theError = NULL;
+	NSLog(@"response = %@", response);
 	
-	NSDictionary *parsedDictionary = [NSDictionary dictionaryWithJSONString:JSON error:&theError];
+	NSArray *substrings = [response componentsSeparatedByString:@"="];
 	
-	NSLog(@"dict = %@", parsedDictionary);
+	NSMutableArray *modifiedSubstrings = [NSMutableArray arrayWithArray:substrings];
+	[modifiedSubstrings removeObjectAtIndex:0];
+	
+	NSString *token = [[[modifiedSubstrings objectAtIndex:0] componentsSeparatedByString:@"&"] objectAtIndex:0];
+	[modifiedSubstrings removeObjectAtIndex:0];
+	
+	NSString *tokenSecret = [[[modifiedSubstrings objectAtIndex:0] componentsSeparatedByString:@"&"] objectAtIndex:0];
+	[modifiedSubstrings removeObjectAtIndex:0];
+	
+	NSString *expireTimer = [[[modifiedSubstrings objectAtIndex:0] componentsSeparatedByString:@"&"] objectAtIndex:0];
+	[modifiedSubstrings removeObjectAtIndex:0];
+	
+	NSString *requestURL = [[[modifiedSubstrings objectAtIndex:0] componentsSeparatedByString:@"&"] objectAtIndex:0];
+	[modifiedSubstrings removeObjectAtIndex:0];
+	
+	NSString *callback = [modifiedSubstrings objectAtIndex:0];
 	
 	return @"";
 }
@@ -96,7 +111,7 @@
 	
 	NSString *data = [self getDataFrom:[self createYahooURL]];
 	
-	NSString *result = [self parseJSON:data];
+	NSString *result = [self parseResponse:data];
 	
 	return toReturn;
 }
