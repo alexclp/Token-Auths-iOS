@@ -82,8 +82,6 @@
 
 - (YahooResponse *)parseResponse:(NSString *)response
 {
-	NSLog(@"response = %@", response);
-	
 	NSArray *substrings = [response componentsSeparatedByString:@"="];
 /*
 	oauth_token=hamakpw&oauth_token_secret=f0c686731a6f873d9ff30f0aff845d19d6dfed4d&oauth_expires_in=3600&xoauth_request_auth_url=https%3A%2F%2Fapi.login.yahoo.com%2Foauth%2Fv2%2Frequest_auth%3Foauth_token%3Dhamakpw&oauth_callback_confirmed=true
@@ -113,13 +111,11 @@
 
 - (NSString *)returnTokenYahoo
 {
-	NSString *toReturn = @"";
-	
 	NSString *data = [self getDataFrom:[self createYahooURL]];
 	
 	YahooResponse *result = [self parseResponse:data];
 	
-	return toReturn;
+	return result.token;
 }
 
 @end
