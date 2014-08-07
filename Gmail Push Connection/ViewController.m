@@ -25,6 +25,10 @@
 #define GoogleAuthURL   @"https://accounts.google.com/o/oauth2/auth"
 #define GoogleTokenURL  @"https://accounts.google.com/o/oauth2/token"
 
+#define YahooConsumerKey @"dj0yJmk9bEo2TmFVbTBZMlNvJmQ9WVdrOU5VZHVTWFpJTkdNbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD1lOA--"
+#define YahooConsumerSecret @"621f893e5e295f8efba1c76a4e4eb8fcb9371e0e%26"
+#define YahooApplicationID @"5GnIvH4c"
+
 static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 
 @interface ViewController ()
@@ -121,9 +125,16 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 
 - (IBAction)yahooButtonClicked:(id)sender
 {
-	Networking *instance = [[Networking alloc] init];
+//	Networking *instance = [[Networking alloc] init];
 	
-	[instance returnTokenYahoo];
+//	[instance returnTokenYahoo];
+	
+	NSURL *requestURL = [NSURL URLWithString:@"https://api.login.yahoo.com/oauth/v2/get_request_token"];
+	NSURL *accessURL = [NSURL URLWithString:@"https://api.login.yahoo.com/oauth/v2/get_token"];
+	NSURL *authorizeURL = [NSURL URLWithString:@"https://api.login.yahoo.com/oauth/v2/request_auth"];
+	NSString *scope = @"https://api.login.yahoo.com";
+	
+	
 }
 
 
