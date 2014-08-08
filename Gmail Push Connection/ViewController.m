@@ -139,17 +139,6 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 
 #pragma mark YAHOO
 
-- (GTMOAuthAuthentication *)authForYahoo
-{
-	GTMOAuthAuthentication *auth;
-	
-	auth = [[GTMOAuthAuthentication alloc] initWithSignatureMethod:kGTMOAuthSignatureMethodHMAC_SHA1 consumerKey:YahooConsumerKey privateKey:YahooConsumerSecret];
-	
-	[auth setServiceProvider:@"Yahoo"];
-	
-	return auth;
-}
-
 - (IBAction)yahooButtonClicked:(id)sender
 {
 	OAuthIOModal *oauthioModal = [[OAuthIOModal alloc] initWithKey:@"Xfjvei5JZVEUqt2kdqgzl716fEc" delegate:self];
