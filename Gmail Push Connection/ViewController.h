@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <OAuthiOS/OAuthiOS.h>
+
 #import "GTMOAuth2Authentication.h"
 #import "GTMOAuth2ViewControllerTouch.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <OAuthIODelegate>
 
 - (IBAction)gmailButtonClicked:(id)sender;
 - (IBAction)yahooButtonClicked:(id)sender;

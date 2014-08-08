@@ -15,17 +15,8 @@
 
 #import "YOSSocial.h"
 
-/*
-#define GoogleClientID @"452674355061-pfphf42qr8p97o4vb9917ed1bc57fd42.apps.googleusercontent.com"
-#define GoogleClientSecret @"aaRo9WyJrhl4-eKBQ8pAytmm"
-*/
-
-///*
-
 #define GoogleClientID    @"997352802958-evpubtvdrtmueh20rd938625tpo2b5s8.apps.googleusercontent.com"
 #define GoogleClientSecret @"fHwEmNBQKKyqKmmnotThEM-g"
-
-//*/
 
 #define GoogleAuthURL   @"https://accounts.google.com/o/oauth2/auth"
 #define GoogleTokenURL  @"https://accounts.google.com/o/oauth2/token"
@@ -53,6 +44,20 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma OAuthIODelegate
+
+// Handles the results of a successful authentication
+- (void)didReceiveOAuthIOResponse:(OAuthIORequest *)request
+{
+	
+}
+
+// Handle errors in the case of an unsuccessful authentication
+- (void)didFailWithOAuthIOError:(NSError *)error
+{
+	
 }
 
 #pragma mark GMAIL
@@ -164,14 +169,11 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 	[self.navigationController pushViewController:viewController animated:YES];
 	*/
 	
-	YOSSession *session = [YOSSession sessionWithConsumerKey:YahooConsumerKey andConsumerSecret:YahooConsumerSecret andApplicationId:YahooApplicationID];
-	BOOL hasSession = [session resumeSession];
+	OAuthIOModal *oauthioModal = [[OAuthIOModal alloc] initWithKey:@"Xfjvei5JZVEUqt2kdqgzl716fEc" delegate:self];
 	
-	if (hasSession == NO) {
-		[session sendUserToAuthorizationWithCallbackUrl:nil];
-	} else {
-		// send requests
-	}
+	[oauthioModal showWithProvider:@"yahoo"];
+	
+	
 }
 
 #pragma mark OUTLOOK

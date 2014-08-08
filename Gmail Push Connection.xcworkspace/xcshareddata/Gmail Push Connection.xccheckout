@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>7B1923F9-9F22-4E12-A00E-AE971749D71C</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Gmail Push Connection</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E2D7AD07-66E7-410F-9398-EF1DBB3EF8AB</key>
+		<string>https://github.com/alexclp/Token-Auths-iOS</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Gmail Push Connection.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E2D7AD07-66E7-410F-9398-EF1DBB3EF8AB</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/alexclp/Token-Auths-iOS</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E2D7AD07-66E7-410F-9398-EF1DBB3EF8AB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E2D7AD07-66E7-410F-9398-EF1DBB3EF8AB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Gmail Push Connection</string>
+		</dict>
+	</array>
+</dict>
+</plist>
