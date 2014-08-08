@@ -51,13 +51,18 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 // Handles the results of a successful authentication
 - (void)didReceiveOAuthIOResponse:(OAuthIORequest *)request
 {
+	NSLog(@"Auth successful");
 	
+	NSDictionary *credentials = [request getCredentials];
+	
+	NSString *token = [credentials objectForKey:@"oauth_token"];
+	NSString *oauth_token_secret = [credentials objectForKey:@"oauth_token_secret"];
 }
 
 // Handle errors in the case of an unsuccessful authentication
 - (void)didFailWithOAuthIOError:(NSError *)error
 {
-	
+	NSLog(@"Oups, credentials were not good");
 }
 
 #pragma mark GMAIL
@@ -147,28 +152,6 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 
 - (IBAction)yahooButtonClicked:(id)sender
 {
-//	Networking *instance = [[Networking alloc] init];
-	
-//	[instance returnTokenYahoo];
-	/*
-	NSURL *requestURL = [NSURL URLWithString:@"https://api.login.yahoo.com/oauth/v2/get_request_token"];
-	NSURL *accessURL = [NSURL URLWithString:@"https://api.login.yahoo.com/oauth/v2/get_token"];
-	NSURL *authorizeURL = [NSURL URLWithString:@"https://api.login.yahoo.com/oauth/v2/request_auth"];
-	NSString *scope = @"https://api.login.yahoo.com";
-	
-	GTMOAuthAuthentication *auth = [self authForYahoo];
-	if (auth == nil) {
-		NSLog(@"Auth not initialized");
-	}
-	
-	[auth setCallback:@"oob"];
-	
-	GTMOAuthViewControllerTouch *viewController;
-	viewController = [[GTMOAuthViewControllerTouch alloc] initWithScope:nil language:nil requestTokenURL:requestURL authorizeTokenURL:authorizeURL accessTokenURL:accessURL authentication:auth appServiceName:kYahooKeychainItemName delegate:self finishedSelector:@selector(viewController:finishedWithAuth:error:)];
-	
-	[self.navigationController pushViewController:viewController animated:YES];
-	*/
-	
 	OAuthIOModal *oauthioModal = [[OAuthIOModal alloc] initWithKey:@"Xfjvei5JZVEUqt2kdqgzl716fEc" delegate:self];
 	
 	[oauthioModal showWithProvider:@"yahoo"];
