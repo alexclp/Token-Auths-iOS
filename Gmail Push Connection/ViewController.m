@@ -26,6 +26,9 @@
 #define YahooApplicationID @"5GnIvH4c"
 #define kYahooKeychainItemName @"OAuth Sample: Yahoo"
 
+#define OutlookClientID @"000000004C123224"
+#define OutlookClientSecret @"niUjykUrtUbkyd3afIkcSA1znf4dN2y9"
+
 static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 
 @interface ViewController ()
@@ -144,8 +147,6 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 	OAuthIOModal *oauthioModal = [[OAuthIOModal alloc] initWithKey:@"Xfjvei5JZVEUqt2kdqgzl716fEc" delegate:self];
 	
 	[oauthioModal showWithProvider:@"yahoo"];
-	
-	
 }
 
 #pragma mark OUTLOOK
