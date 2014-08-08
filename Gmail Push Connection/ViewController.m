@@ -13,6 +13,8 @@
 #import "GTMOAuthAuthentication.h"
 #import "GTMOAuthViewControllerTouch.h"
 
+#import "YOSSocial.h"
+
 /*
 #define GoogleClientID @"452674355061-pfphf42qr8p97o4vb9917ed1bc57fd42.apps.googleusercontent.com"
 #define GoogleClientSecret @"aaRo9WyJrhl4-eKBQ8pAytmm"
@@ -143,7 +145,7 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 //	Networking *instance = [[Networking alloc] init];
 	
 //	[instance returnTokenYahoo];
-	
+	/*
 	NSURL *requestURL = [NSURL URLWithString:@"https://api.login.yahoo.com/oauth/v2/get_request_token"];
 	NSURL *accessURL = [NSURL URLWithString:@"https://api.login.yahoo.com/oauth/v2/get_token"];
 	NSURL *authorizeURL = [NSURL URLWithString:@"https://api.login.yahoo.com/oauth/v2/request_auth"];
@@ -160,10 +162,17 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 	viewController = [[GTMOAuthViewControllerTouch alloc] initWithScope:nil language:nil requestTokenURL:requestURL authorizeTokenURL:authorizeURL accessTokenURL:accessURL authentication:auth appServiceName:kYahooKeychainItemName delegate:self finishedSelector:@selector(viewController:finishedWithAuth:error:)];
 	
 	[self.navigationController pushViewController:viewController animated:YES];
+	*/
+	
+	YOSSession *session = [YOSSession sessionWithConsumerKey:YahooConsumerKey andConsumerSecret:YahooConsumerSecret andApplicationId:YahooApplicationID];
+	BOOL hasSession = [session resumeSession];
+	
+	if (hasSession == NO) {
+		[session sendUserToAuthorizationWithCallbackUrl:nil];
+	} else {
+		// send requests
+	}
 }
-
-
-
 
 #pragma mark OUTLOOK
 

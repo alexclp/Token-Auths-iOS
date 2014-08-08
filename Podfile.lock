@@ -20,14 +20,17 @@ PODS:
   - AFNetworking/UIKit (2.3.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - OAuth.io (1.2.0)
   - TouchJSON (1.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.2)
+  - OAuth.io
   - TouchJSON (~> 1.1)
 
 SPEC CHECKSUMS:
   AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
+  OAuth.io: 8d8afdbae0b8bae35c11da591ae29002edca2c21
   TouchJSON: b40940e40e53bb9b1ad60c63e01ed83bff93d53e
 
 COCOAPODS: 0.33.1
