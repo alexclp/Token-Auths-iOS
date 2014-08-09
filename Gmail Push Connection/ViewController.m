@@ -163,7 +163,7 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 	
 //    auth.scope = @"https://www.googleapis.com/auth/plus.me";
 	
-	auth.scope = @"wl.emails";
+	auth.scope = @"wl.imap";
 	
     GTMOAuth2ViewControllerTouch *viewController = [[GTMOAuth2ViewControllerTouch alloc] initWithAuthentication:auth
 																							   authorizationURL:[NSURL URLWithString:@"https://login.live.com/oauth20_authorize.srf"]
