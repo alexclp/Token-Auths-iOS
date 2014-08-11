@@ -8,12 +8,9 @@
 
 #import "ViewController.h"
 #import "AFHTTPRequestOperationManager.h"
-#import "Networking.h"
 
 #import "GTMOAuthAuthentication.h"
 #import "GTMOAuthViewControllerTouch.h"
-
-#import "YOSSocial.h"
 
 #define GoogleClientID    @"997352802958-evpubtvdrtmueh20rd938625tpo2b5s8.apps.googleusercontent.com"
 #define GoogleClientSecret @"fHwEmNBQKKyqKmmnotThEM-g"

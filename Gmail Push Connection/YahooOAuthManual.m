@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Alexandru Clapa. All rights reserved.
 //
 
-#import "Networking.h"
+#import "YahooOAuthManual.h"
 #import "YahooResponse.h"
 
 #define YahooConsumerKey @"dj0yJmk9bEo2TmFVbTBZMlNvJmQ9WVdrOU5VZHVTWFpJTkdNbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD1lOA--"
