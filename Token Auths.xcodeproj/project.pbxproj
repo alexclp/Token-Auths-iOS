@@ -13,6 +13,7 @@
 		0F34E13D19941E990097EEC7 /* GTMOAuthSignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F34E13B19941E990097EEC7 /* GTMOAuthSignIn.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0F34E1411994234C0097EEC7 /* GTMOAuthViewControllerTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F34E13F1994234C0097EEC7 /* GTMOAuthViewControllerTouch.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0F34E1421994234C0097EEC7 /* GTMOAuthViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F34E1401994234C0097EEC7 /* GTMOAuthViewTouch.xib */; };
+		0FCC0959199904DE00693781 /* RequestsPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCC0958199904DE00693781 /* RequestsPush.m */; };
 		0FE156F01943C5AB00C61A87 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE156EF1943C5AB00C61A87 /* Foundation.framework */; };
 		0FE156F21943C5AB00C61A87 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE156F11943C5AB00C61A87 /* CoreGraphics.framework */; };
 		0FE156F41943C5AB00C61A87 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE156F31943C5AB00C61A87 /* UIKit.framework */; };
@@ -58,6 +59,8 @@
 		0F34E13E1994234C0097EEC7 /* GTMOAuthViewControllerTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuthViewControllerTouch.h; sourceTree = "<group>"; };
 		0F34E13F1994234C0097EEC7 /* GTMOAuthViewControllerTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuthViewControllerTouch.m; sourceTree = "<group>"; };
 		0F34E1401994234C0097EEC7 /* GTMOAuthViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GTMOAuthViewTouch.xib; sourceTree = "<group>"; };
+		0FCC0957199904DE00693781 /* RequestsPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestsPush.h; sourceTree = "<group>"; };
+		0FCC0958199904DE00693781 /* RequestsPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestsPush.m; sourceTree = "<group>"; };
 		0FE156EC1943C5AB00C61A87 /* Token Auths.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Token Auths.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FE156EF1943C5AB00C61A87 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0FE156F11943C5AB00C61A87 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -158,6 +161,8 @@
 				0F34E0DF1992C22C0097EEC7 /* YahooOAuthManual.m */,
 				0F34E0E11992F69A0097EEC7 /* YahooResponse.h */,
 				0F34E0E21992F69A0097EEC7 /* YahooResponse.m */,
+				0FCC0957199904DE00693781 /* RequestsPush.h */,
+				0FCC0958199904DE00693781 /* RequestsPush.m */,
 				0FE157071943C5AB00C61A87 /* Images.xcassets */,
 				0FEE2279197DDFEC0040E27E /* Gmail OAuth */,
 				0FE156F61943C5AB00C61A87 /* Supporting Files */,
@@ -363,6 +368,7 @@
 				0FE156FC1943C5AB00C61A87 /* main.m in Sources */,
 				0F34E0E01992C22C0097EEC7 /* YahooOAuthManual.m in Sources */,
 				0F34E1411994234C0097EEC7 /* GTMOAuthViewControllerTouch.m in Sources */,
+				0FCC0959199904DE00693781 /* RequestsPush.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
