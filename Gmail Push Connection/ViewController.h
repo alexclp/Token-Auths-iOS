@@ -17,5 +17,6 @@
 - (IBAction)gmailButtonClicked:(id)sender;
 - (IBAction)yahooButtonClicked:(id)sender;
 - (IBAction)outlookButtonClicked:(id)sender;
+- (IBAction)checkEmail:(id)sender;
 
 @end

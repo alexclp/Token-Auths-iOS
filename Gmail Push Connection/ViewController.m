@@ -12,8 +12,11 @@
 #import "GTMOAuthAuthentication.h"
 #import "GTMOAuthViewControllerTouch.h"
 
-#define GoogleClientID    @"997352802958-evpubtvdrtmueh20rd938625tpo2b5s8.apps.googleusercontent.com"
-#define GoogleClientSecret @"fHwEmNBQKKyqKmmnotThEM-g"
+//#define GoogleClientID    @"997352802958-evpubtvdrtmueh20rd938625tpo2b5s8.apps.googleusercontent.com"
+//#define GoogleClientSecret @"fHwEmNBQKKyqKmmnotThEM-g"
+
+#define GoogleClientID @"1000494215729-lbj0k70ce1ihc4fco6vdafeqlg1faa7t.apps.googleusercontent.com"
+#define GoogleClientSecret @"99d5ilo2M7Vkl4AtxO2sHAWR"
 
 #define GoogleAuthURL   @"https://accounts.google.com/o/oauth2/auth"
 #define GoogleTokenURL  @"https://accounts.google.com/o/oauth2/token"
@@ -25,6 +28,8 @@
 
 #define OutlookClientID @"000000004C123224"
 #define OutlookClientSecret @"niUjykUrtUbkyd3afIkcSA1znf4dN2y9"
+
+#define DeviceToken @"50ed43d36739c3acfff4895cba61115559f9f816b5b2a7fd802635bbb7c85f85"
 
 static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 
@@ -54,6 +59,8 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 	NSLog(@"Auth successful");
 	
 	NSDictionary *credentials = [request getCredentials];
+	
+	NSLog(@"credentials = %@", credentials);
 	
 	NSString *token = [credentials objectForKey:@"oauth_token"];
 	NSString *oauth_token_secret = [credentials objectForKey:@"oauth_token_secret"];
@@ -122,6 +129,23 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 		
 //		[self tokenRequestWithCode:auth.code];
 		
+		
+		/*
+		NSDictionary *parameters = @{@"account": @"alexclp31@gmail.com",
+									 @"domain": @"GMAIL",
+									 @"access_token": auth.accessToken,
+									 @"refresh_token": auth.refreshToken,
+									 @"device_token": DeviceToken};
+
+ 		AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+
+		[manager POST:@"http://188.26.122.230/mailsync/createAccount.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+			NSLog(@"JSON: %@", responseObject);
+			
+		} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+			NSLog(@"Error: %@", error);
+		}];
+		*/
     }
 }
 
@@ -169,6 +193,20 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 	
     [self.navigationController pushViewController:viewController animated:YES];
 
+}
+
+#pragma mark Check Email
+
+- (IBAction)checkEmail:(id)sender
+{
+	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+	NSDictionary *parameters = @{@"email": @"alexclp31@gmail.com",
+								 @"domain": @"GMAIL"};
+	[manager POST:@"http://188.26.122.230/mailsync/checkMail.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		NSLog(@"JSON: %@", responseObject);
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		NSLog(@"Error: %@", error);
+	}];
 }
 
 @end
