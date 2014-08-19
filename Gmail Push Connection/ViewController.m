@@ -15,8 +15,8 @@
 //#define GoogleClientID    @"997352802958-evpubtvdrtmueh20rd938625tpo2b5s8.apps.googleusercontent.com"
 //#define GoogleClientSecret @"fHwEmNBQKKyqKmmnotThEM-g"
 
-#define GoogleClientID @"1000494215729-lbj0k70ce1ihc4fco6vdafeqlg1faa7t.apps.googleusercontent.com"
-#define GoogleClientSecret @"99d5ilo2M7Vkl4AtxO2sHAWR"
+#define GoogleClientID @"1000494215729-kseloiia2hc8ge1smgs3tuuvhh6f1iak.apps.googleusercontent.com"
+#define GoogleClientSecret @"xHgXJx6UuOWTqBsWbKaCl4mW"
 
 #define GoogleAuthURL   @"https://accounts.google.com/o/oauth2/auth"
 #define GoogleTokenURL  @"https://accounts.google.com/o/oauth2/token"
@@ -30,6 +30,8 @@
 #define OutlookClientSecret @"niUjykUrtUbkyd3afIkcSA1znf4dN2y9"
 
 #define DeviceToken @"50ed43d36739c3acfff4895cba61115559f9f816b5b2a7fd802635bbb7c85f85"
+
+#define TEST_EMAIL @"test.app.mail.sync@gmail.com"
 
 static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 
@@ -130,8 +132,9 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 //		[self tokenRequestWithCode:auth.code];
 		
 		
-		/*
-		NSDictionary *parameters = @{@"account": @"alexclp31@gmail.com",
+
+
+		NSDictionary *parameters = @{@"account": TEST_EMAIL,
 									 @"domain": @"GMAIL",
 									 @"access_token": auth.accessToken,
 									 @"refresh_token": auth.refreshToken,
@@ -145,7 +148,7 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 		} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 			NSLog(@"Error: %@", error);
 		}];
-		*/
+
     }
 }
 
@@ -200,8 +203,11 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 - (IBAction)checkEmail:(id)sender
 {
 	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-	NSDictionary *parameters = @{@"email": @"alexclp31@gmail.com",
+	NSDictionary *parameters = @{@"email": TEST_EMAIL,
 								 @"domain": @"GMAIL"};
+	
+	NSLog(@"parameters = %@", parameters);
+	
 	[manager POST:@"http://188.26.122.230/mailsync/checkMail.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
 		NSLog(@"JSON: %@", responseObject);
 	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
