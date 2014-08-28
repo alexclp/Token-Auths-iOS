@@ -121,7 +121,7 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 	NSDictionary *parameters = @{@"access_token": token,
 								 @"access_token_secret": oauth_token_secret,
 								 @"domain": @"YAHOO",
-								 @"account": @"alecla96@yahoo.com",
+								 @"account": self.currentEmailAddress,
 								 @"oauth_session_handle": @"a",
 								 @"device_token": DeviceToken};
 	
@@ -211,18 +211,6 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
     }
 }
 
-- (NSString *)getTimeStamp
-{
-	NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
-//	NSTimeInterval is defined as double
-	
-	NSNumber *timeStampObj = [NSNumber numberWithDouble:timeStamp];
-	
-	int timeStampint = [timeStampObj intValue];
-	
-	return [NSString stringWithFormat:@"%d", timeStampint];
-}
-
 #pragma mark YAHOO
 
 - (IBAction)yahooButtonClicked:(id)sender
@@ -230,6 +218,11 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 	OAuthIOModal *oauthioModal = [[OAuthIOModal alloc] initWithKey:@"Xfjvei5JZVEUqt2kdqgzl716fEc" delegate:self];
 	
 	[oauthioModal showWithProvider:@"yahoo"];
+	
+	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Email Address?" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil] ;
+	alertView.tag = 2;
+	alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+	[alertView show];
 	
 }
 
