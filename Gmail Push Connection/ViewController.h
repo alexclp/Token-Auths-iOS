@@ -14,6 +14,8 @@
 
 @interface ViewController : UIViewController <OAuthIODelegate>
 
+@property (strong, nonatomic) NSString *currentEmailAddress;
+
 - (IBAction)gmailButtonClicked:(id)sender;
 - (IBAction)yahooButtonClicked:(id)sender;
 - (IBAction)outlookButtonClicked:(id)sender;

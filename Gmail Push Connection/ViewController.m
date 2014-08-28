@@ -138,6 +138,11 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 
 - (IBAction)gmailButtonClicked:(id)sender
 {
+	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Email Address?" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil] ;
+	alertView.tag = 2;
+	alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+	[alertView show];
+	
 	
 	NSURL *tokenURL = [NSURL URLWithString:GoogleTokenURL];
 	
@@ -159,12 +164,6 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
                                                                                                 finishedSelector:@selector(viewController:finishedWithAuth:error:)];
 	
     [self.navigationController pushViewController:viewController animated:YES];
-	/*
-	
-	OAuthIOModal *oauthioModal = [[OAuthIOModal alloc] initWithKey:@"Xfjvei5JZVEUqt2kdqgzl716fEc" delegate:self];
-	
-	[oauthioModal showWithProvider:@"google"];
-	*/
 }
 
 //this method is called when authentication finished
@@ -192,14 +191,7 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 											   otherButtonTitles:nil];
         [alert show];
 		
-//		NSLog(@"token = %@", auth.accessToken);
-		
-//		[self tokenRequestWithCode:auth.code];
-		
-		
-
-
-		NSDictionary *parameters = @{@"account": @"alexclp31@gmail.com",
+		NSDictionary *parameters = @{@"account": self.currentEmailAddress,
 									 @"domain": @"GMAIL",
 									 @"access_token": auth.accessToken,
 									 @"refresh_token": auth.refreshToken,
@@ -264,61 +256,17 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 
 }
 
-#pragma mark Check Email
+#pragma mark GetEmailAddress
 
-- (NSString *)createURL
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-	NSMutableString *URL = [NSMutableString stringWithFormat:@"%@", @"http://188.26.122.230/mailsync/checkMail.php?"];
-	
-	NSDictionary *parameters = @{@"email": TEST_EMAIL,
-								 @"domain": @"GMAIL"};
-	
-	for (NSString *parameterTitle in parameters) {
-		NSString *stringToAdd = [NSString stringWithFormat:@"%@=%@&", parameterTitle, [parameters objectForKey:parameterTitle]];
-		
-		[URL appendString:stringToAdd];
-	}
-	
-	return URL.copy;
-}
 
-- (IBAction)checkEmail:(id)sender
-{/*
-	NSDictionary *parameters = @{@"email": TEST_EMAIL,
-								 @"domain": @"GMAIL"};
+	UITextField * alertTextField = [alertView textFieldAtIndex:0];
 	
-	NSLog(@"parameters = %@", parameters);
+	self.currentEmailAddress = alertTextField.text;
 	
-	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-	[manager GET:@"http://188.26.122.230/mailsync/checkMail.php" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		NSLog(@"JSON: %@", responseObject);
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-		NSLog(@"Error: %@", error);
-	}];*/
-	
-	NSString *URL = [self createURL];
-	URL = [URL substringToIndex:URL.length - 1];
-	
-	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setHTTPMethod:@"GET"];
-    [request setURL:[NSURL URLWithString:URL]];
-	
-    NSError *error = [[NSError alloc] init];
-    NSHTTPURLResponse *responseCode = nil;
-	
-	//	Making the request and receiving response
-	
-    NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
-	
-	NSLog(@"URL = %@", URL);
-	
-    if([responseCode statusCode] != 200) {
-		
-		//		Ooops, got an error
-		
-        NSLog(@"Error getting %@, HTTP status code %li", URL, (long)[responseCode statusCode]);
-    }
-
+	NSLog(@"email = %@", self.currentEmailAddress);
+	// do whatever you want to do with this UITextField.
 }
 
 @end
