@@ -10,6 +10,21 @@
 
 @implementation AppDelegate
 
+- (void)writeToTextFile:(NSString *)text
+{
+	// Get the documents directory:
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+	
+	// Build the path to the file
+	NSString *path = [documentsDirectory stringByAppendingPathComponent:@"Token.plist"];
+	
+	NSError *error;
+	
+	// Writing to file
+	[text writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:&error];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
@@ -26,6 +41,8 @@
 	NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet: [NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSLog(@"content---%@", token);
+	
+	[self writeToTextFile:token];
 }
 
 - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error

@@ -21,9 +21,9 @@
 #define GoogleAuthURL   @"https://accounts.google.com/o/oauth2/auth"
 #define GoogleTokenURL  @"https://accounts.google.com/o/oauth2/token"
 
-#define YahooConsumerKey @"dj0yJmk9bEo2TmFVbTBZMlNvJmQ9WVdrOU5VZHVTWFpJTkdNbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD1lOA--"
-#define YahooConsumerSecret @"621f893e5e295f8efba1c76a4e4eb8fcb9371e0e%26"
-#define YahooApplicationID @"5GnIvH4c"
+#define YahooConsumerKey @"dj0yJmk9ZXVwUHh2SGtndU1hJmQ9WVdrOVRHUjBkVmt4Tm5FbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD00Zg--"
+#define YahooConsumerSecret @"c62ece90ed067e3ffb02ea3d2164dfed425a3665%26"
+#define YahooApplicationID @"LdtuY16q"
 #define kYahooKeychainItemName @"OAuth Sample: Yahoo"
 
 #define OutlookClientID @"000000004C123224"
@@ -51,6 +51,20 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSString *)getToken
+{
+	// Get the documents directory:
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+	
+	// Build the path to the file
+	NSString *path = [documentsDirectory stringByAppendingPathComponent:@"Token.plist"];
+	
+	NSError *error;
+	
+	return [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
 }
 
 - (void)createAccount:(NSString *)account andDomain:(NSString *)domain accessToken:(NSString *)atoken andRefreshToken:(NSString *)rtoken
@@ -184,12 +198,12 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 		
 		
 
-/*
-		NSDictionary *parameters = @{@"account": TEST_EMAIL,
+
+		NSDictionary *parameters = @{@"account": @"alexclp31@gmail.com",
 									 @"domain": @"GMAIL",
 									 @"access_token": auth.accessToken,
 									 @"refresh_token": auth.refreshToken,
-									 @"device_token": DeviceToken};
+									 @"device_token": [self getToken]};
 
  		AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
 
@@ -199,8 +213,8 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 		} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 			NSLog(@"Error: %@", error);
 		}];
-*/
-		NSLog(@"access token = %@", auth.userData);
+
+		NSLog(@"access token = %@", auth.accessToken);
 
     }
 }
