@@ -12,11 +12,8 @@
 #import "GTMOAuthAuthentication.h"
 #import "GTMOAuthViewControllerTouch.h"
 
-//#define GoogleClientID    @"997352802958-evpubtvdrtmueh20rd938625tpo2b5s8.apps.googleusercontent.com"
-//#define GoogleClientSecret @"fHwEmNBQKKyqKmmnotThEM-g"
-
-#define GoogleClientID @"1000494215729-pehvprm46fnmuunp6uemn7nph9tl9uss.apps.googleusercontent.com"
-#define GoogleClientSecret @"nNHiHKDGO7i2sVW2SNDOvSQT"
+#define GoogleClientID @"1000494215729-vr41jat73tv151ffprmq9lrl6lg7esn3.apps.googleusercontent.com"
+#define GoogleClientSecret @"gPsKw4m91RWWu02zH8M68_dx"
 
 #define GoogleAuthURL   @"https://accounts.google.com/o/oauth2/auth"
 #define GoogleTokenURL  @"https://accounts.google.com/o/oauth2/token"
@@ -28,10 +25,6 @@
 
 #define OutlookClientID @"000000004C123224"
 #define OutlookClientSecret @"niUjykUrtUbkyd3afIkcSA1znf4dN2y9"
-
-#define DeviceToken @"50ed43d36739c3acfff4895cba61115559f9f816b5b2a7fd802635bbb7c85f85"
-
-#define TEST_EMAIL @"testaplicatiepush@gmail.com"
 
 static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 
@@ -75,7 +68,7 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 									 @"domain": domain,
 									 @"access_token": atoken,
 									 @"refresh_token": rtoken,
-									 @"device_token": DeviceToken};
+									 @"device_token": [self getToken]};
 		
 		NSLog(@"parameters = %@", parameters);
 		
@@ -123,7 +116,7 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 								 @"domain": @"YAHOO",
 								 @"account": self.currentEmailAddress,
 								 @"oauth_session_handle": @"a",
-								 @"device_token": DeviceToken};
+								 @"device_token": [self getToken]};
 	
 	[self addYahooAccountWithParameters:parameters];
 }
@@ -196,6 +189,8 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 									 @"access_token": auth.accessToken,
 									 @"refresh_token": auth.refreshToken,
 									 @"device_token": [self getToken]};
+		
+		NSLog(@"parameters = %@", parameters);
 
  		AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
 
@@ -207,8 +202,22 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 		}];
 
 		NSLog(@"access token = %@", auth.accessToken);
-
     }
+}
+
+- (IBAction)refreshToken:(id)sender
+{
+	NSDictionary *parameters = @{@"refresh_token": @"1/ItSF90SZ1e-icsft1aAiba-SwHn0Ltk-IM6bVWZiZC8",
+								 @"client_id": GoogleClientID,
+								 @"client_secret": GoogleClientSecret,
+								 @"grant_type": @"refresh_token"};
+	
+	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+	[manager POST:@"https://accounts.google.com/o/oauth2/token" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		NSLog(@"JSON: %@", responseObject);
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		NSLog(@"Error: %@", error);
+	}];
 }
 
 #pragma mark YAHOO
@@ -246,7 +255,6 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 																							   finishedSelector:@selector(viewController:finishedWithAuth:error:)];
 	
     [self.navigationController pushViewController:viewController animated:YES];
-
 }
 
 #pragma mark GetEmailAddress
