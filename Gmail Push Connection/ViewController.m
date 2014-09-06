@@ -167,12 +167,12 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 
 - (IBAction)yahooButtonClicked:(id)sender
 {
-	/*
+	// Getting the user's email address.
 	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Email Address?" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil] ;
 	alertView.tag = 2;
 	alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
-	[alertView show];*/
-	//[self signInToCustomService];
+	[alertView show];
+	
 	
 }
 
