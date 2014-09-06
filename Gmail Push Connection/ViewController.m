@@ -18,8 +18,8 @@
 #define GoogleAuthURL   @"https://accounts.google.com/o/oauth2/auth"
 #define GoogleTokenURL  @"https://accounts.google.com/o/oauth2/token"
 
-#define YahooConsumerKey @"dj0yJmk9ZXVwUHh2SGtndU1hJmQ9WVdrOVRHUjBkVmt4Tm5FbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD00Zg--"
-#define YahooConsumerSecret @"c62ece90ed067e3ffb02ea3d2164dfed425a3665%26"
+#define YahooConsumerKey @"dj0yJmk9bmJNbFdhZ0lFT0ZLJmQ9WVdrOU5WSklhbVJKTlRJbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD0xMg--"
+#define YahooConsumerSecret @"0483a424177c4ab94c3c440a724e01c4325916b4%26"
 #define YahooApplicationID @"LdtuY16q"
 #define kYahooKeychainItemName @"OAuth Sample: Yahoo"
 
@@ -58,73 +58,6 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 	NSError *error;
 	
 	return [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
-}
-
-- (void)createAccount:(NSString *)account andDomain:(NSString *)domain accessToken:(NSString *)atoken andRefreshToken:(NSString *)rtoken
-{
-	if ([domain isEqualToString:@"google"]) {
-		domain = @"GMAIL";
-		NSDictionary *parameters = @{@"account": account,
-									 @"domain": domain,
-									 @"access_token": atoken,
-									 @"refresh_token": rtoken,
-									 @"device_token": [self getToken]};
-		
-		NSLog(@"parameters = %@", parameters);
-		
-		AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-		
-		[manager POST:@"http://188.26.122.230/mailsync/createAccount.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-			NSLog(@"JSON: %@", responseObject);
-			
-		} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-			NSLog(@"Error: %@", error);
-		}];
-
-	}
-	
-}
-
-- (void)addYahooAccountWithParameters:(NSDictionary *)parameters
-{
-	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-	[manager POST:@"http://188.26.122.230/mailsync/createAccount.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		NSLog(@"JSON: %@", responseObject);
-		
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-		NSLog(@"Error: %@", error);
-	}];
-}
-
-#pragma OAuthIODelegate
-
-// Handles the results of a successful authentication
-- (void)didReceiveOAuthIOResponse:(OAuthIORequest *)request
-{
-	NSLog(@"Auth successful");
-	
-	NSDictionary *credentials = [request getCredentials];
-	
-	NSLog(@"credentials = %@", credentials);
-	
-	NSString *token = [credentials objectForKey:@"oauth_token"];
-	NSString *oauth_token_secret = [credentials objectForKey:@"oauth_token_secret"];
-//	[self createAccount:TEST_EMAIL andDomain:[credentials objectForKey:@"provider"] accessToken:[credentials objectForKey:@"access_token"] andRefreshToken:@"refresh_token"];
-	
-	NSDictionary *parameters = @{@"access_token": token,
-								 @"access_token_secret": oauth_token_secret,
-								 @"domain": @"YAHOO",
-								 @"account": self.currentEmailAddress,
-								 @"oauth_session_handle": @"a",
-								 @"device_token": [self getToken]};
-	
-	[self addYahooAccountWithParameters:parameters];
-}
-
-// Handle errors in the case of an unsuccessful authentication
-- (void)didFailWithOAuthIOError:(NSError *)error
-{
-	NSLog(@"Oups, credentials were not good");
 }
 
 #pragma mark GMAIL
@@ -205,34 +138,53 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
     }
 }
 
-- (IBAction)refreshToken:(id)sender
+- (void)createAccount:(NSString *)account andDomain:(NSString *)domain accessToken:(NSString *)atoken andRefreshToken:(NSString *)rtoken
 {
-	NSDictionary *parameters = @{@"refresh_token": @"1/ItSF90SZ1e-icsft1aAiba-SwHn0Ltk-IM6bVWZiZC8",
-								 @"client_id": GoogleClientID,
-								 @"client_secret": GoogleClientSecret,
-								 @"grant_type": @"refresh_token"};
+	if ([domain isEqualToString:@"google"]) {
+		domain = @"GMAIL";
+		NSDictionary *parameters = @{@"account": account,
+									 @"domain": domain,
+									 @"access_token": atoken,
+									 @"refresh_token": rtoken,
+									 @"device_token": [self getToken]};
+		
+		NSLog(@"parameters = %@", parameters);
+		
+		AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+		
+		[manager POST:@"http://188.26.122.230/mailsync/createAccount.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+			NSLog(@"JSON: %@", responseObject);
+			
+		} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+			NSLog(@"Error: %@", error);
+		}];
+		
+	}
 	
-	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-	[manager POST:@"https://accounts.google.com/o/oauth2/token" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-		NSLog(@"JSON: %@", responseObject);
-	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-		NSLog(@"Error: %@", error);
-	}];
 }
 
 #pragma mark YAHOO
 
 - (IBAction)yahooButtonClicked:(id)sender
 {
-	OAuthIOModal *oauthioModal = [[OAuthIOModal alloc] initWithKey:@"Xfjvei5JZVEUqt2kdqgzl716fEc" delegate:self];
-	
-	[oauthioModal showWithProvider:@"yahoo"];
-	
+	/*
 	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Email Address?" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil] ;
 	alertView.tag = 2;
 	alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
-	[alertView show];
+	[alertView show];*/
+	//[self signInToCustomService];
 	
+}
+
+- (void)addYahooAccountWithParameters:(NSDictionary *)parameters
+{
+	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+	[manager POST:@"http://188.26.122.230/mailsync/createAccount.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+		NSLog(@"JSON: %@", responseObject);
+		
+	} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+		NSLog(@"Error: %@", error);
+	}];
 }
 
 #pragma mark OUTLOOK
