@@ -31,13 +31,11 @@
 		0F1BC9B419BBCE470000B97A /* YOSUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1BC99A19BBCE470000B97A /* YOSUser.m */; };
 		0F1BC9B519BBCE470000B97A /* YOSUserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1BC99C19BBCE470000B97A /* YOSUserRequest.m */; };
 		0F1BC9B619BBCE470000B97A /* YQLQueryRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F1BC99E19BBCE470000B97A /* YQLQueryRequest.m */; };
-		0F34E0E01992C22C0097EEC7 /* YahooOAuthManual.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F34E0DF1992C22C0097EEC7 /* YahooOAuthManual.m */; };
-		0F34E0E31992F69A0097EEC7 /* YahooResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F34E0E21992F69A0097EEC7 /* YahooResponse.m */; };
 		0F34E13C19941E990097EEC7 /* GTMOAuthAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F34E13919941E990097EEC7 /* GTMOAuthAuthentication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0F34E13D19941E990097EEC7 /* GTMOAuthSignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F34E13B19941E990097EEC7 /* GTMOAuthSignIn.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0F34E1411994234C0097EEC7 /* GTMOAuthViewControllerTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F34E13F1994234C0097EEC7 /* GTMOAuthViewControllerTouch.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0F34E1421994234C0097EEC7 /* GTMOAuthViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F34E1401994234C0097EEC7 /* GTMOAuthViewTouch.xib */; };
-		0FCC0959199904DE00693781 /* RequestsPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FCC0958199904DE00693781 /* RequestsPush.m */; };
+		0F7B8E8919BBD4C10082B35A /* AccountAdderToServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7B8E8819BBD4C10082B35A /* AccountAdderToServer.m */; };
 		0FE156F01943C5AB00C61A87 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE156EF1943C5AB00C61A87 /* Foundation.framework */; };
 		0FE156F21943C5AB00C61A87 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE156F11943C5AB00C61A87 /* CoreGraphics.framework */; };
 		0FE156F41943C5AB00C61A87 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FE156F31943C5AB00C61A87 /* UIKit.framework */; };
@@ -121,10 +119,6 @@
 		0F1BC99C19BBCE470000B97A /* YOSUserRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YOSUserRequest.m; sourceTree = "<group>"; };
 		0F1BC99D19BBCE470000B97A /* YQLQueryRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQLQueryRequest.h; sourceTree = "<group>"; };
 		0F1BC99E19BBCE470000B97A /* YQLQueryRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQLQueryRequest.m; sourceTree = "<group>"; };
-		0F34E0DE1992C22C0097EEC7 /* YahooOAuthManual.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YahooOAuthManual.h; sourceTree = "<group>"; };
-		0F34E0DF1992C22C0097EEC7 /* YahooOAuthManual.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YahooOAuthManual.m; sourceTree = "<group>"; };
-		0F34E0E11992F69A0097EEC7 /* YahooResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YahooResponse.h; sourceTree = "<group>"; };
-		0F34E0E21992F69A0097EEC7 /* YahooResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YahooResponse.m; sourceTree = "<group>"; };
 		0F34E13819941E990097EEC7 /* GTMOAuthAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuthAuthentication.h; sourceTree = "<group>"; };
 		0F34E13919941E990097EEC7 /* GTMOAuthAuthentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuthAuthentication.m; sourceTree = "<group>"; };
 		0F34E13A19941E990097EEC7 /* GTMOAuthSignIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuthSignIn.h; sourceTree = "<group>"; };
@@ -132,8 +126,8 @@
 		0F34E13E1994234C0097EEC7 /* GTMOAuthViewControllerTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuthViewControllerTouch.h; sourceTree = "<group>"; };
 		0F34E13F1994234C0097EEC7 /* GTMOAuthViewControllerTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuthViewControllerTouch.m; sourceTree = "<group>"; };
 		0F34E1401994234C0097EEC7 /* GTMOAuthViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GTMOAuthViewTouch.xib; sourceTree = "<group>"; };
-		0FCC0957199904DE00693781 /* RequestsPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestsPush.h; sourceTree = "<group>"; };
-		0FCC0958199904DE00693781 /* RequestsPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestsPush.m; sourceTree = "<group>"; };
+		0F7B8E8719BBD4C10082B35A /* AccountAdderToServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountAdderToServer.h; sourceTree = "<group>"; };
+		0F7B8E8819BBD4C10082B35A /* AccountAdderToServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountAdderToServer.m; sourceTree = "<group>"; };
 		0FE156EC1943C5AB00C61A87 /* Token Auths.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Token Auths.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FE156EF1943C5AB00C61A87 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0FE156F11943C5AB00C61A87 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -318,12 +312,8 @@
 				0FE157011943C5AB00C61A87 /* Main.storyboard */,
 				0FE157041943C5AB00C61A87 /* ViewController.h */,
 				0FE157051943C5AB00C61A87 /* ViewController.m */,
-				0F34E0DE1992C22C0097EEC7 /* YahooOAuthManual.h */,
-				0F34E0DF1992C22C0097EEC7 /* YahooOAuthManual.m */,
-				0F34E0E11992F69A0097EEC7 /* YahooResponse.h */,
-				0F34E0E21992F69A0097EEC7 /* YahooResponse.m */,
-				0FCC0957199904DE00693781 /* RequestsPush.h */,
-				0FCC0958199904DE00693781 /* RequestsPush.m */,
+				0F7B8E8719BBD4C10082B35A /* AccountAdderToServer.h */,
+				0F7B8E8819BBD4C10082B35A /* AccountAdderToServer.m */,
 				0FE157071943C5AB00C61A87 /* Images.xcassets */,
 				0F1BC96919BBCE470000B97A /* YahooSDK */,
 				0FEE2279197DDFEC0040E27E /* Gmail OAuth */,
@@ -523,7 +513,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F34E0E31992F69A0097EEC7 /* YahooResponse.m in Sources */,
 				0F1BC9B019BBCE470000B97A /* YOSRequestClient.m in Sources */,
 				0F1BC9B519BBCE470000B97A /* YOSUserRequest.m in Sources */,
 				0F1BC9AA19BBCE470000B97A /* YOAuthUtil.m in Sources */,
@@ -551,12 +540,11 @@
 				0F1BC9B219BBCE470000B97A /* YOSResponseData.m in Sources */,
 				0F1BC9A219BBCE470000B97A /* NSData+OAuthResponse.m in Sources */,
 				0FE156FC1943C5AB00C61A87 /* main.m in Sources */,
-				0F34E0E01992C22C0097EEC7 /* YahooOAuthManual.m in Sources */,
 				0F34E1411994234C0097EEC7 /* GTMOAuthViewControllerTouch.m in Sources */,
 				0F1BC9AB19BBCE470000B97A /* YahooSession.m in Sources */,
+				0F7B8E8919BBD4C10082B35A /* AccountAdderToServer.m in Sources */,
 				0F1BC9B119BBCE470000B97A /* YOSRequestToken.m in Sources */,
 				0F1BC9A419BBCE470000B97A /* NSString+URLEncoding.m in Sources */,
-				0FCC0959199904DE00693781 /* RequestsPush.m in Sources */,
 				0F1BC9B619BBCE470000B97A /* YQLQueryRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

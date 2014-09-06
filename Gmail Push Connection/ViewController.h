@@ -11,10 +11,12 @@
 
 #import "GTMOAuth2Authentication.h"
 #import "GTMOAuth2ViewControllerTouch.h"
+#import "YahooSDK.h"
 
-@interface ViewController : UIViewController <OAuthIODelegate>
+@interface ViewController : UIViewController <YahooSessionDelegate>
 
 @property (strong, nonatomic) NSString *currentEmailAddress;
+@property (strong, nonatomic) YahooSession *session;
 
 - (IBAction)gmailButtonClicked:(id)sender;
 - (IBAction)yahooButtonClicked:(id)sender;

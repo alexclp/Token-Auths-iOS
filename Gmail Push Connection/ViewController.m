@@ -18,9 +18,9 @@
 #define GoogleAuthURL   @"https://accounts.google.com/o/oauth2/auth"
 #define GoogleTokenURL  @"https://accounts.google.com/o/oauth2/token"
 
-#define YahooConsumerKey @"dj0yJmk9bmJNbFdhZ0lFT0ZLJmQ9WVdrOU5WSklhbVJKTlRJbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD0xMg--"
-#define YahooConsumerSecret @"0483a424177c4ab94c3c440a724e01c4325916b4%26"
-#define YahooApplicationID @"LdtuY16q"
+#define YahooConsumerKey @"dj0yJmk9U3l3U2ZqUkVWem1vJmQ9WVdrOVMwOW1WMnRVTkhNbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD0xMQ--"
+#define YahooConsumerSecret @"be5cc99954917216a1042a9ef7e17d91835ec424"
+#define YahooApplicationID @"KOfWkT4s"
 #define kYahooKeychainItemName @"OAuth Sample: Yahoo"
 
 #define OutlookClientID @"000000004C123224"
@@ -60,15 +60,20 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 	return [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
 }
 
-#pragma mark GMAIL
-
-- (IBAction)gmailButtonClicked:(id)sender
+- (void)getEmail
 {
+	// Getting the user's email address.
 	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Email Address?" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil] ;
 	alertView.tag = 2;
 	alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
 	[alertView show];
-	
+}
+
+#pragma mark GMAIL
+
+- (IBAction)gmailButtonClicked:(id)sender
+{
+	[self getEmail];
 	
 	NSURL *tokenURL = [NSURL URLWithString:GoogleTokenURL];
 	
@@ -123,8 +128,6 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 									 @"refresh_token": auth.refreshToken,
 									 @"device_token": [self getToken]};
 		
-		NSLog(@"parameters = %@", parameters);
-
  		AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
 
 		[manager POST:@"http://188.26.122.230/mailsync/createAccount.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -133,8 +136,6 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 		} failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 			NSLog(@"Error: %@", error);
 		}];
-
-		NSLog(@"access token = %@", auth.accessToken);
     }
 }
 
@@ -147,9 +148,7 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 									 @"access_token": atoken,
 									 @"refresh_token": rtoken,
 									 @"device_token": [self getToken]};
-		
-		NSLog(@"parameters = %@", parameters);
-		
+
 		AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
 		
 		[manager POST:@"http://188.26.122.230/mailsync/createAccount.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -165,15 +164,41 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 
 #pragma mark YAHOO
 
+- (void)createYahooSession
+{
+	// Create session with consumer key, secret, application ID and callback URL
+    self.session = [YahooSession sessionWithConsumerKey:YahooConsumerKey
+                                      andConsumerSecret:YahooConsumerSecret
+                                       andApplicationId:YahooApplicationID
+                                         andCallbackUrl:@"http://alexandruclapa.com"
+                                            andDelegate:self];
+    // Try to resume a user session if one exists
+    BOOL hasSession = [self.session resumeSession];
+	
+    // No session detected, send user to sign-in and authorization page
+    if(!hasSession) {
+        [self.session sendUserToAuthorization];
+		// Session detected, user is already signed-in begin requests
+    } else {
+        NSLog(@"Session detected!");
+        // Send authenticated requests to Yahoo APIs here...
+		
+//		YOSAccessToken *instance = [[YOSAccessToken alloc] init];
+//		NSDictionary *requestData = [instance tokenAsDictionary];
+		
+//		NSLog(@"request data = %@", requestData);
+    }
+}
+
+- (void)didReceiveAuthorization
+{
+    [self createYahooSession];
+}
+
 - (IBAction)yahooButtonClicked:(id)sender
 {
-	// Getting the user's email address.
-	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Email Address?" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil] ;
-	alertView.tag = 2;
-	alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
-	[alertView show];
-	
-	
+//	[self getEmail];
+	[self createYahooSession];
 }
 
 - (void)addYahooAccountWithParameters:(NSDictionary *)parameters

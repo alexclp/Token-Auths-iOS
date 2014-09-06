@@ -78,6 +78,8 @@
     tokenDictionary[@"authExpiresDate"] = self.authExpiresDate;
     tokenDictionary[@"tokenExpiresDate"] = self.tokenExpiresDate;
     
+	NSLog(@"token as dict = %@", tokenDictionary);
+	
 	if (self.consumer) {
         tokenDictionary[@"consumer"] = self.consumer;
     }
