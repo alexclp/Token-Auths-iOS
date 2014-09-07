@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "AFHTTPRequestOperationManager.h"
+#import "AccountAdderToServer.h"
 
 #import "GTMOAuthAuthentication.h"
 #import "GTMOAuthViewControllerTouch.h"
@@ -64,7 +65,7 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 {
 	// Getting the user's email address.
 	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Email Address?" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil] ;
-	alertView.tag = 2;
+	alertView.tag = 1;
 	alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
 	[alertView show];
 }
@@ -183,10 +184,17 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
         NSLog(@"Session detected!");
         // Send authenticated requests to Yahoo APIs here...
 		
-//		YOSAccessToken *instance = [[YOSAccessToken alloc] init];
-//		NSDictionary *requestData = [instance tokenAsDictionary];
+		NSDictionary *tokens = [self.session.accessToken tokenAsDictionary];
+		NSLog(@"tokens = %@", tokens);
 		
-//		NSLog(@"request data = %@", requestData);
+		NSDictionary *parameters = @{@"account": self.currentEmailAddress,
+									 @"domain": @"YAHOO",
+									 @"access_token_secret": [tokens objectForKey:@"secret"],
+									 @"access_token": [tokens objectForKey:@"key"],
+									 @"oauth_session_handle": [tokens objectForKey:@"sessionHandle"],
+									 @"device_token": [self getToken]};
+		
+		[[AccountAdderToServer sharedManager] addYahooAccountWithParameters:parameters];
     }
 }
 
@@ -197,8 +205,11 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 
 - (IBAction)yahooButtonClicked:(id)sender
 {
-//	[self getEmail];
-	[self createYahooSession];
+	// Getting the user's email address.
+	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Email Address?" message:@"" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil] ;
+	alertView.tag = 2;
+	alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+	[alertView show];
 }
 
 - (void)addYahooAccountWithParameters:(NSDictionary *)parameters
@@ -239,11 +250,15 @@ static NSString *redirectURI = @"urn:ietf:wg:oauth:2.0:oob";
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
 
-	UITextField * alertTextField = [alertView textFieldAtIndex:0];
+	UITextField *alertTextField = [alertView textFieldAtIndex:0];
 	
 	self.currentEmailAddress = alertTextField.text;
 	
 	NSLog(@"email = %@", self.currentEmailAddress);
+	
+	if (alertView.tag == 2) {
+		[self createYahooSession];
+	}
 	// do whatever you want to do with this UITextField.
 }
 
